@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <style>
+    /* Small popup styling */
+    #smallPopup {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 320px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      z-index: 1000;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #smallPopup h2 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    #smallPopup p {
+      margin: 10px 0 15px;
+      font-size: 14px;
+    }
+
+    #smallPopup button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #smallPopup button:hover {
+      background-color: #0056b3;
+    }
+
+    #smallPopup img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      display: block;
+      border-radius: 50%;
+    }
+
+    /* Fullscreen form popup styling */
+    #formPopup {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 10%;
+      width: 80vw;
+      height: 80vh;
+      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+      z-index: 2000;
+      overflow: auto;
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #formPopup iframe {
+      width: 100%;
+      height: calc(100% - 60px); /* Full height minus space for close button */
+      border: none;
+      border-radius: 4px;
+    }
+
+    #formPopup .closeButton {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    #formPopup .closeButton:hover {
+      background-color: #0056b3;
+    }
+
+    /* Minimized Thendral button styling */
+    #minimizedThendral {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 100px;  /* Increased size */
+      height: 100px; /* Increased size */
+      background-color: #007BFF;
+      border-radius: 50%;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    #minimizedThendral img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+    }
+
+    /* Close button styling for Thendral */
+    #closeThendral {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    #closeThendral:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- Small Popup -->
+  <div id="smallPopup">
+    <img src="assets/img/thendral.jpg" alt="Chatbot Assistant">
+    <h2>Hi! I'm Thendral</h2>
+    <p>To request a call back. Submit your details here</p>
+      <p>
+        மீண்டும் அழைப்பைக் கோருவதற்கு. உங்கள் விவரங்களை இங்கே சமர்ப்பிக்கவும்
+      </p>
+    <button onclick="showForm()">Fill Out Form</button>
+    <button id="closeThendral" onclick="hideThendral()">×</button>
+  </div>
+
+  <!-- Fullscreen Form Popup -->
+  <div id="formPopup">
+    <button class="closeButton" onclick="closeForm()">×</button>
+    <iframe src="https://forms.gle/v5yyy1VzEh7t9kHz6" title="Contact Form"></iframe>
+  </div>
+
+  <!-- Minimized Thendral Button -->
+  <div id="minimizedThendral" onclick="restoreForm()">
+    <img src="assets/img/thendral.jpg" alt="Chatbot Assistant">
+  </div>
+
+  <script>
+    // Show the small popup 2 seconds after the page loads
+    window.onload = function() {
+      setTimeout(function() {
+        document.getElementById("smallPopup").style.display = "block";
+      }, 2000); 
+    };
+
+    // Show the fullscreen form popup and hide the small popup
+    function showForm() {
+      document.getElementById("smallPopup").style.display = "none";
+      document.getElementById("formPopup").style.display = "block";
+      document.getElementById("minimizedThendral").style.display = "flex";
+    }
+
+    // Close the fullscreen form popup and show the minimized Thendral button
+    function closeForm() {
+      document.getElementById("formPopup").style.display = "none";
+      document.getElementById("minimizedThendral").style.display = "flex";
+      document.getElementById("smallPopup").style.display = "block";
+      document.getElementById("closeThendral").style.display = "block"; // Show the 'X' button after form close
+    }
+
+    // Hide the Thendral pop-up but keep the minimized Thendral button visible
+    function hideThendral() {
+      document.getElementById("smallPopup").style.display = "none";
+    }
+
+    // Restore the form popup and hide the minimized Thendral button
+    function restoreForm() {
+      document.getElementById("formPopup").style.display = "block";
+      document.getElementById("minimizedThendral").style.display = "none";
+    }
+  </script>
+</body>
+</html>
