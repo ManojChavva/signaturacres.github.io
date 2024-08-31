@@ -2159,6 +2159,21 @@ footer .credits {
   font-size: 14px;
 }
 
+/* Sparkle animation keyframes */
+@keyframes sparkle {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.8), 
+                0 0 10px rgba(255, 215, 0, 0.6),
+                0 0 15px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 1), 
+                0 0 30px rgba(255, 215, 0, 0.8),
+                0 0 40px rgba(255, 215, 0, 0.6);
+  }
+}
+
+/* Small Popup Styling */
 #smallPopup {
   display: none;
   position: fixed;
@@ -2171,8 +2186,27 @@ footer .credits {
   box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
   border-radius: 8px;
   z-index: 1000;
-  transition: transform 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
+/* When the popup becomes visible */
+#smallPopup.show {
+  opacity: 1;
+  transform: translateY(0);
+  animation: sparkle 1s ease-in-out forwards; /* Add sparkle animation */
+}
+
+/* Hello Message Styling */
+#helloMessage {
+  font-size: 24px;
+  color: #007BFF;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: none;
+}
+
 
 #smallPopup h2 {
   margin: 10px 0;
