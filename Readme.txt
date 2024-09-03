@@ -21,7 +21,7 @@ Currently, this website is hosted on GitHub for transparency and easy access. Yo
 
 ## Note
 
-While the base template was freely licensed, I've transformed it into something entirely unique, and it now includes proprietary content for Signature Acres. Any use of the website template should respect this customization and not reflect any information related to Signature Acres without permission.
+While the base template was freely licensed, I've transformed it into something entirely unique, and it now includes proprietary content for Signature Acres. Any use of the website template should respect this customization and not reflect any information related to Signature Acres without permission. Please refer the license for further https://github.com/ManojChavva/signaturacres.github.io?tab=License-1-ov-file
 
 Feel free to explore the repository, and I'm always open to feedback and improvements. 
 
